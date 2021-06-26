@@ -57,11 +57,15 @@ export function AdminRoom() {
     })
   }
 
+  function returnHomePage() {
+    return history.push('/')
+  }
+
   return (
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+          <img src={logoImg} alt="Letmeask" onClick={returnHomePage}/>
           <div>
             <RoomCode code={roomId} />
             <Button isOutlined onClick={handleEndRoom}>Encerrar sala</Button>

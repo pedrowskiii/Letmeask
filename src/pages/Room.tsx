@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 
 import { useState, FormEvent } from 'react'
 
@@ -28,6 +28,7 @@ export function Room() {
   const roomId = params.id
 
   const { tittle, questions } = useRoom(roomId)
+  const history = useHistory()
 
   async function handleSendQuestion(event: FormEvent) {
     event.preventDefault()
@@ -64,11 +65,15 @@ export function Room() {
     }
   }
 
+  function returnPageHome() {
+    return history.push('/')
+  }
+
   return (
     <div id="page-room">
       <header>
         <div className="content">
-          <img src={logoImg} alt="Letmeask" />
+          <img src={logoImg} alt="Letmeask" onClick={returnPageHome}/>
           <RoomCode code={roomId} />
         </div>
       </header>

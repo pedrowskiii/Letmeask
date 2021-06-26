@@ -18,6 +18,7 @@ export function Home() {
   const { user, signInWithGoogle } = useAuth()
   const [roomCode, setRoomCode] = useState(' ')
 
+
   async function handleCreateRoom() {
     if (!user) {
       await signInWithGoogle()
@@ -65,6 +66,7 @@ export function Home() {
           <div className="separator"> ou entre em uma sala </div>
           <form onSubmit={handleJoinRoom}>
             <input
+              className="class-code"
               type="text"
               placeholder="Digite o código da sala"
               onChange={event => setRoomCode(event.target.value)}
